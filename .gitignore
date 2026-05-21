@@ -1,0 +1,19 @@
+# Build output (large compiled files — do not upload)
+astra-sim/build/astra_analytical/build/
+astra-sim/build/astra_ns3/build/
+astra-sim/build/astra_garnet/build/
+astra-sim/build/astra_htsim/build/
+
+# Simulation logs (generated each run)
+astra-sim/log/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# macOS system files
+.DS_Store
+
+# Temporary Word files
+~$*.docx
