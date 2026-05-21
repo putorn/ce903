@@ -73,4 +73,3 @@ When the team produces Chakra traces from real Hugging Face training:
 1. Place `.et` files in `astra-sim/` (one per GPU, e.g. `trace.0.et`, `trace.1.et`)
 2. Point `--workload-configuration` at the trace prefix
 3. See [README_config.md](README_config.md) Section 6 for full instructions
-# ce903
