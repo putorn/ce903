@@ -1,50 +1,6 @@
 # CE903 Group Project — Network for LLM Training
 
-Sprint 2 · Role 2: ASTRA-sim & Simulation Setup
-
----
-
-## What This Repository Contains
-
-| Folder / File | Description |
-|---------------|-------------|
-| `astra-sim/` | ASTRA-sim 2.0 simulator — cloned, built, and ready to run |
-| `SETUP.md` | How to install and build ASTRA-sim on your machine |
-| `README_config.md` | How to change simulation parameters and run scenarios |
-| `environment.yml` | Conda environment — recreate with `conda env create -f environment.yml` |
-| `docs/` | Sprint 2 report and deliverables |
-
----
-
-## Quick Start
-
-**1. Set up conda environment**
-```bash
-conda env create -f astra-sim/environment.yml
-conda activate p903
-```
-
-**2. Read the setup guide for your OS**
-
-See [SETUP.md](SETUP.md)
-- macOS → follow directly
-- Linux → follow directly, use `apt-get` instead of `brew`
-- Windows → must enable WSL2 first (instructions in SETUP.md Section 0)
-
-**3. Run an example simulation**
-```bash
-cd astra-sim
-./build/astra_analytical/build/bin/AstraSim_Analytical_Congestion_Unaware \
-    --workload-configuration=examples/workload/microbenchmarks/reduce_scatter/4npus_1MB/reduce_scatter \
-    --system-configuration=examples/system/native_collectives/Ring_4chunks.json \
-    --remote-memory-configuration=examples/remote_memory/analytical/no_memory_expansion.json \
-    --network-configuration=examples/network/analytical/Ring_4npus.yml
-```
-
-**4. Check results**
-```bash
-cat astra-sim/log/log.log
-```
+Role 2: ASTRA-sim & Simulation Setup · Sprint 3
 
 ---
 
@@ -52,24 +8,74 @@ cat astra-sim/log/log.log
 
 ```
 ce903/
-├── README.md                        ← You are here
-├── .gitignore
-├── SETUP.md                         ← Installation guide
-├── README_config.md                 ← Configuration guide
-├── environment.yml                  ← Conda environment
-├── astra-sim/                       ← Simulator source code
-│   ├── examples/                    ← Bundled workloads and configs
-│   ├── build/                       ← Compiled binaries (not uploaded to GitHub)
-│   └── log/                         ← Simulation output (not uploaded to GitHub)
-└── docs/
-    └── Role2_ASTRA_sim_Sprint2.docx ← Sprint 2 deliverable report
+├── astra-sim/           ASTRA-sim 2.0 simulator (built, ready to run)
+├── pod_b_traffic/       TC-02 — ring all-reduce baseline sweep
+├── pod_a_pipeline/      TC-01 — trace-to-sim pipeline
+├── runpod/              GPU profiling scripts for RunPod A100
+├── SETUP.md             Build guide (macOS / Linux / Windows WSL2)
+└── environment.yml      Conda environment (Python 3.11)
 ```
 
 ---
 
-## Sprint 3 — Next Steps
+## Setup
 
-When the team produces Chakra traces from real Hugging Face training:
-1. Place `.et` files in `astra-sim/` (one per GPU, e.g. `trace.0.et`, `trace.1.et`)
-2. Point `--workload-configuration` at the trace prefix
-3. See [README_config.md](README_config.md) Section 6 for full instructions
+```bash
+conda env create -f environment.yml
+conda activate p903
+```
+
+Build ASTRA-sim (macOS):
+```bash
+export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:/opt/homebrew/bin:$PATH"
+export PROTOBUF_FROM_SOURCE=True
+bash astra-sim/build/astra_analytical/build.sh -t all
+```
+
+Linux: same command without the PATH/env exports.
+
+---
+
+## TC-02 — All-Reduce Baseline (Pod B)
+
+```bash
+cd pod_b_traffic
+bash generate_workloads.sh   # generate .et files (run once)
+bash run_baseline.sh         # run 9 simulations + analyse
+```
+
+Results in `pod_b_traffic/results/`. Re-analyse without re-running:
+```bash
+python analyze_results.py
+```
+
+---
+
+## TC-01 — Trace-to-Sim Pipeline (Pod A)
+
+```bash
+cd pod_a_pipeline
+bash run_pipeline.sh         # generate trace → simulate → validate
+```
+
+To use Roshan's real trace instead of the synthetic one:
+1. Copy `gpt2.0.et … gpt2.3.et` into `pod_a_pipeline/workloads/`
+2. Set `WORKLOAD_PREFIX="gpt2"` in `run_pipeline.sh` (line 31)
+3. Re-run `bash run_pipeline.sh`
+
+---
+
+## RunPod (A100 GPU traces)
+
+```bash
+# On RunPod — run once after starting the pod
+bash runpod/setup.sh
+
+# Kyle: export GPT-2 profiler traces
+python runpod/kyle_profiler/run_profiler.py
+
+# Roshan: convert traces to Chakra .et format
+bash runpod/roshan_converter/convert.sh
+```
+
+Output: `runpod/roshan_converter/workloads/gpt2.*.et` → copy to `pod_a_pipeline/workloads/`.
