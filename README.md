@@ -20,19 +20,37 @@ ce903/
 
 ## Setup
 
+**Step 1 — Create conda environment (Python 3.11)**
 ```bash
 conda env create -f environment.yml
 conda activate p903
 ```
 
-Build ASTRA-sim (macOS):
+**Step 2 — Install pip packages**
+```bash
+pip install -r requirements.txt
+```
+
+For the profiler pipeline (trace conversion) also run:
+```bash
+pip install "git+https://github.com/facebookresearch/param.git#subdirectory=train/compute/python"
+```
+
+> TC-01 and TC-02 simulations do not require Step 2 — ASTRA-sim is a C++ binary.
+
+**Step 3 — Build ASTRA-sim**
+
+macOS:
 ```bash
 export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:/opt/homebrew/bin:$PATH"
 export PROTOBUF_FROM_SOURCE=True
 bash astra-sim/build/astra_analytical/build.sh -t all
 ```
 
-Linux: same command without the PATH/env exports.
+Linux:
+```bash
+bash astra-sim/build/astra_analytical/build.sh -t all
+```
 
 ---
 

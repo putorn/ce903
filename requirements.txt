@@ -1,0 +1,14 @@
+# ── ASTRA-sim simulation (TC-01, TC-02) ───────────────────────────────────────
+# No pip packages required — ASTRA-sim is a C++ binary built via CMake.
+# Only conda env (Python 3.11) is needed to run pod_b_traffic and pod_a_pipeline.
+
+# ── Profiler pipeline (kyle_profiler + roshan_converter) ──────────────────────
+# Required only if running the GPT-2 profiler or Chakra trace conversion.
+
+torch>=2.1.0
+transformers
+HolisticTraceAnalysis
+
+# et-replay must be installed from source (not on PyPI)
+# Run manually:
+#   pip install "git+https://github.com/facebookresearch/param.git#subdirectory=train/compute/python"
