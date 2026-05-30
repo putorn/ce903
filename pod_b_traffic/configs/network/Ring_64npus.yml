@@ -1,0 +1,8 @@
+# Ring topology for 64 NPUs — used in Pod B all-reduce baseline sweep (TC-02).
+# Bandwidth and latency kept identical to the 4/16 NPU configs so the only
+# variable across the sweep is ring size, making the scaling curves directly
+# comparable.
+topology: [Ring]
+npus_count: [64]
+bandwidth: [50.0] # GB/s
+latency: [500.0]  # ns
