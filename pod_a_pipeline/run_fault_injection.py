@@ -23,7 +23,7 @@ No C++ changes are needed, making this the right critical-bar implementation.
 The C++ hook remains the Sprint 4 stretch goal.
 
 Observability contract fields written to results/observability_contract.json
-(Pod B / klye_code.py reads these alongside the results directories):
+(Pod B / recovery_metrics.py reads these alongside the results directories):
 
   fault_node_id              — which NPU failed (NPU 0, fixed for demo)
   fault_timestamp_T0         — conceptual injection point (30% of baseline JCT)
@@ -34,7 +34,7 @@ Observability contract fields written to results/observability_contract.json
   jct_with_failure_cycles    — raw JCT from failure run
   jct_recovery_penalty_cycles — the metric Pod B verifies (FR-G2, TC-03)
 
-Output layout expected by klye_code.py
+Output layout expected by recovery_metrics.py
 ---------------------------------------
   pod_a_pipeline/results/log.log               — baseline simulation log
   pod_a_pipeline/results_with_failure/log.log  — failure simulation log

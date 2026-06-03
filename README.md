@@ -20,7 +20,7 @@ ce903/
 │   ├── results_fault_run/       C++ injection run logs + fault_events.csv
 │   ├── run_pipeline.sh          TC-01 — generate trace → simulate → validate
 │   ├── run_fault_injection.py   TC-03 — Python fault injection (critical bar)
-│   ├── klye_code.py             Measurement harness — JCT penalty + NCCL stall
+│   ├── recovery_metrics.py             Measurement harness — JCT penalty + NCCL stall
 │   ├── sprint4_results.py       Final results report
 │   ├── fault_events.csv         Fault timestamp T0 (spec-calculated)
 │   └── stall_events.csv         Stall detection time (spec-calculated)
@@ -148,7 +148,7 @@ conda run -n p903 python pod_a_pipeline/sprint4_results.py
 ### View full metric tables (JCT Penalty + NCCL Stall Duration)
 
 ```bash
-conda run -n p903 python pod_a_pipeline/klye_code.py
+conda run -n p903 python pod_a_pipeline/recovery_metrics.py
 ```
 
 ### Results
