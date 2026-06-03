@@ -26,9 +26,7 @@ SYSTEM_CFG="${POD_A_DIR}/configs/system/Ring_gpt2.json"
 NETWORK_CFG="${POD_A_DIR}/configs/network/Ring_4npus.yml"
 
 # ── Workload prefix ────────────────────────────────────────────────────────────
-# Change this to the real trace prefix when Roshan delivers the converted .et files.
-# Must match the filename before the ".N.et" suffix (e.g. "real_gpt2" for real_gpt2.0.et).
-WORKLOAD_PREFIX="gpt2"  # swap to "real_gpt2" (or whatever Roshan names it)
+WORKLOAD_PREFIX="gpt2_step"
 WORKLOAD_DIR="${POD_A_DIR}/workloads"
 RESULT_DIR="${POD_A_DIR}/results"
 
