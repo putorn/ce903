@@ -21,4 +21,3 @@ dependencies:
   - wheel=0.46.3=py311hca03da5_0
   - xz=5.8.2=h8bbcb1d_0
   - zlib=1.3.1=hb4cf58c_1
-prefix: /opt/homebrew/Caskroom/miniconda/base/envs/p903

@@ -18,6 +18,18 @@ __pycache__/
 # Temporary Word files
 ~$*.docx
 
+# ── Sprint 4: generated / personal files ──────────────────────────────────────
+
+# Fault injection — generated simulation logs and traces
+pod_a_pipeline/results_with_failure/
+pod_a_pipeline/results_fault_run/
+pod_a_pipeline/workloads_failure/
+
+# Personal document generators (not project code)
+sprint4_report*.py
+sprint3_summary_tae.py
+sprint4_report_en.py
+
 # ── Sprint 3: generated / binary files ────────────────────────────────────────
 
 # Pod B — generated .et workloads and simulation logs (recreated by generate_workloads.sh)
