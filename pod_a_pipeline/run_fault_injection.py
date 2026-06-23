@@ -43,6 +43,7 @@ Output layout expected by recovery_metrics.py
 
 from __future__ import annotations
 
+import argparse
 import json
 import os
 import re
@@ -308,5 +309,28 @@ def main() -> int:
     return 0
 
 
+def run_seed_sweep() -> int:
+    """
+    Entry point for the Lane B seeded MTBE sweep (seeds 42-51, step_metrics.csv,
+    stall_type). The real implementation lives in fault_injection_hook/
+    run_seed_sweep.py since it needs the C++ fault-injection patch
+    (apply_patch/rebuild/revert_patch) that this file's Sprint 4 demo never
+    needed — this is a thin pass-through so `run_fault_injection.py
+    --seed-sweep` is a valid entry point, as requested.
+    """
+    fault_injection_hook_dir = os.path.abspath(os.path.join(SCRIPT_DIR, "..", "fault_injection_hook"))
+    sys.path.insert(0, fault_injection_hook_dir)
+    import run_seed_sweep as seed_sweep_impl
+    return seed_sweep_impl.main()
+
+
 if __name__ == "__main__":
-    sys.exit(main())
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--seed-sweep",
+        action="store_true",
+        help="Run the Lane B seeded MTBE sweep (seeds 42-51) instead of the Sprint 4 single-fault demo.",
+    )
+    args = parser.parse_args()
+
+    sys.exit(run_seed_sweep() if args.seed_sweep else main())
