@@ -1,0 +1,186 @@
+{
+  "lstm": {
+    "mean_precision": 1.0,
+    "std_precision": 0.0,
+    "mean_recall": 1.0,
+    "std_recall": 0.0,
+    "mean_f1": 1.0,
+    "std_f1": 0.0,
+    "mean_lead_time_steps": 0.0,
+    "mean_prob_positive_class": 0.9956,
+    "mean_prob_negative_class": 0.0016
+  },
+  "logistic_regression_baseline": {
+    "mean_precision": 1.0,
+    "mean_recall": 1.0,
+    "mean_f1": 1.0
+  },
+  "nfr_p1_gate": {
+    "precision_threshold": 0.7,
+    "precision_pass": true,
+    "lead_time_threshold": 0,
+    "lead_time_pass": true,
+    "overall_pass": true
+  },
+  "per_fold": [
+    {
+      "tp": 1,
+      "fp": 0,
+      "fn": 0,
+      "tn": 7,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "mean_prob_positive_class": 0.9974,
+      "mean_prob_negative_class": 0.0019,
+      "seed": 42,
+      "lead_time": 0.0
+    },
+    {
+      "tp": 3,
+      "fp": 0,
+      "fn": 0,
+      "tn": 5,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "mean_prob_positive_class": 0.9958,
+      "mean_prob_negative_class": 0.0018,
+      "seed": 43,
+      "lead_time": 0.0
+    },
+    {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "tn": 6,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "mean_prob_positive_class": 0.9921,
+      "mean_prob_negative_class": 0.0014,
+      "seed": 44,
+      "lead_time": 0.0
+    },
+    {
+      "tp": 4,
+      "fp": 0,
+      "fn": 0,
+      "tn": 4,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "mean_prob_positive_class": 0.9966,
+      "mean_prob_negative_class": 0.0015,
+      "seed": 45,
+      "lead_time": 0.0
+    },
+    {
+      "tp": 3,
+      "fp": 0,
+      "fn": 0,
+      "tn": 5,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "mean_prob_positive_class": 0.9979,
+      "mean_prob_negative_class": 0.0017,
+      "seed": 46,
+      "lead_time": 0.0
+    },
+    {
+      "tp": 5,
+      "fp": 0,
+      "fn": 0,
+      "tn": 3,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "mean_prob_positive_class": 0.9973,
+      "mean_prob_negative_class": 0.0017,
+      "seed": 47,
+      "lead_time": 0.0
+    },
+    {
+      "tp": 5,
+      "fp": 0,
+      "fn": 0,
+      "tn": 3,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "mean_prob_positive_class": 0.9943,
+      "mean_prob_negative_class": 0.0015,
+      "seed": 48,
+      "lead_time": 0.0
+    },
+    {
+      "tp": 3,
+      "fp": 0,
+      "fn": 0,
+      "tn": 5,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "mean_prob_positive_class": 0.9958,
+      "mean_prob_negative_class": 0.0016,
+      "seed": 49,
+      "lead_time": 0.0
+    },
+    {
+      "tp": 4,
+      "fp": 0,
+      "fn": 0,
+      "tn": 4,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "mean_prob_positive_class": 0.9953,
+      "mean_prob_negative_class": 0.0014,
+      "seed": 50,
+      "lead_time": 0.0
+    },
+    {
+      "tp": 2,
+      "fp": 0,
+      "fn": 0,
+      "tn": 6,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "mean_prob_positive_class": 0.9933,
+      "mean_prob_negative_class": 0.0016,
+      "seed": 51,
+      "lead_time": 0.0
+    }
+  ],
+  "ablation_f1_without_feature": {
+    "step_time": 1.0,
+    "completion_ratio": 1.0,
+    "node_throughput": 1.0,
+    "soft_stall_flag": 1.0
+  },
+  "config": {
+    "window_w": 3,
+    "n_features": 4,
+    "hidden_size": 16,
+    "epochs": 150,
+    "noise_sigma": 0.05,
+    "seeds_used": [
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51
+    ],
+    "eval_method": "Leave-One-Seed-Out cross-validation (LOSO-CV)",
+    "lr_baseline": "Logistic regression on flattened windows",
+    "label_mode": "detection (fault step inside window)",
+    "lead_time_note": "0 steps = same-step detection, not N-step prediction"
+  }
+}
