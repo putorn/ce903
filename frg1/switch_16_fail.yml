@@ -1,0 +1,6 @@
+topology: [ Switch ]
+npus_count: [ 16 ]
+bandwidth: [ 25.0 ]   # GB/s — switch bandwidth halved: the fault-redundancy test
+latency: [ 500.0 ]    # ns
+# The same switched fabric with its bandwidth halved, standing in for a degraded switch.
+# JCT increase vs the healthy switch run is the fault-redundancy penalty.

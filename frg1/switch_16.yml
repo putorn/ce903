@@ -1,0 +1,7 @@
+topology: [ Switch ]
+npus_count: [ 16 ]
+bandwidth: [ 50.0 ]   # GB/s
+latency: [ 500.0 ]    # ns
+# Single-tier switched fabric (FR-G1 fallback). Every NPU reaches every other in one hop
+# through the switch — full path diversity, vs the ring's multi-hop. Same shape as
+# astra-sim's validated HGX-H100 example, so it's guaranteed to run.
