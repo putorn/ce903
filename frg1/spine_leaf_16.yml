@@ -1,0 +1,7 @@
+topology: [ Switch, Switch ]
+npus_count: [ 4, 4 ]        # 4 NPUs per leaf x 4 leaves = 16 NPUs (matches Ring_16npus)
+bandwidth: [ 50.0, 50.0 ]   # GB/s  (dim-1 = leaf tier, dim-2 = spine tier)
+latency: [ 500.0, 500.0 ]   # ns
+# Two-tier spine-leaf, structurally equivalent to Alibaba HPN dual-ToR (FR-G1).
+# dim-1 (Switch): NPUs <-> leaf switch.  dim-2 (Switch): leaves <-> spine.
+# Every leaf reaches every other via the spine tier -> path diversity + redundancy.

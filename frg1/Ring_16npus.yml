@@ -1,0 +1,7 @@
+topology: [ Ring ]
+npus_count: [ 16 ]
+bandwidth: [ 50.0 ]   # GB/s
+latency: [ 500.0 ]    # ns
+# Ring topology baseline at 16 NPUs — matched NPU count to the spine-leaf runs.
+# At 16 NPUs the ring's bus bandwidth saturates (TC-02 finding), which is the
+# condition FR-G1's path-diverse topology is meant to overcome.
