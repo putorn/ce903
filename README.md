@@ -70,6 +70,18 @@ ce903/
 
 ## Setup
 
+## Regression Sweep (TC-01–04)
+
+To confirm the whole pipeline still passes end-to-end, run one command from the repo root:
+
+​```bash
+bash run_regression_sweep.sh
+​```
+
+This runs all four test cases in order and prints a pass/fail summary at the end.
+Individual steps for each test case (if you want to run or debug one at a time)
+are documented below.
+
 **Step 1 — Create conda environment**
 ```bash
 conda env create -f environment.yml
@@ -219,7 +231,7 @@ python tc04/generate_routing.py  # generates the predictor-informed routing conf
 bash tc04/run_tc04.sh            # run from the repo root — runs ECMP vs predictor and prints the verdict
 ```
 
-Results in `tc04/tc04_results/`. Key metrics:
+Results in tc04/tc04_results/ (see also tc04/TC04_results.md for the confirmed numbers). Key metrics:
 
 | Metric | Value |
 |--------|-------|
