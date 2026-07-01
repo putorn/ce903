@@ -16,6 +16,9 @@ Run order:
     2. python tc04/train_lstm.py                           (this script)
     3. python tc04/generate_routing.py
 """
+import os
+import sys
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import json
 import numpy as np
