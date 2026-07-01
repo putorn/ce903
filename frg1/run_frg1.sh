@@ -40,8 +40,12 @@ WL_PREFIX="${WL_DIR}/gpt2_step"
 NPUS=16
 mkdir -p "${OUT}" "${LOGDIR}"
 
-# The trace generator runs through the p903 conda env — that's the one carrying protobuf.
-PY="conda run --no-capture-output -n p903 python"
+# Use the p903 conda env if it exists, else fall back to the current python3
+if conda env list 2>/dev/null | grep -q '\bp903\b'; then
+  PY="conda run --no-capture-output -n p903 python"
+else
+  PY="python3"
+fi
 
 echo "Right — workload first. Same 16-NPU GPT-2 step the rest of the project uses, so the"
 echo "comparison stays fair..."

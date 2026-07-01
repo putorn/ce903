@@ -25,7 +25,13 @@ WL_DIR="${SCRIPT_DIR}/workloads_16"
 WL_PREFIX="${WL_DIR}/gpt2_step"
 NPUS=16
 mkdir -p "${OUT}" "${LOGDIR}"
-PY="conda run --no-capture-output -n p903 python"
+
+# Use the p903 conda env if it exists, else fall back to the current python3
+if conda env list 2>/dev/null | grep -q '\bp903\b'; then
+  PY="conda run --no-capture-output -n p903 python"
+else
+  PY="python3"
+fi
 
 echo "Fallback run — single-tier switch fabric. Building the 16-NPU workload first..."
 ${PY} "${REPO_ROOT}/pod_a_pipeline/generate_synthetic_trace.py" \
