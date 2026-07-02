@@ -166,15 +166,15 @@ def main():
 
     # save failure-trace metrics alongside the training metrics
     failure_metrics = {
-        "seed":                    SEED,
+        "seed":                    int(SEED),
         "failure_trace_dir":       str(FAILURE_TRACE_DIR),
         "topology_shift":          "4→3 NPU (TC-03 failure pattern)",
-        "rel_mae_pct":             round(rel_mae_pct, 4),
-        "effective_horizon":       eff_horizon,
-        "per_step_rel_mae_pct":    [round(v, 4) for v in per_step_pct],
+        "rel_mae_pct":             round(float(rel_mae_pct), 4),
+        "effective_horizon":       int(eff_horizon),
+        "per_step_rel_mae_pct":    [round(float(v), 4) for v in per_step_pct],
         "acceptance_criteria": {
-            "mae_lt_10pct":         rel_mae_pct < 10.0,
-            "horizon_gte_2_bursts": eff_horizon >= 2,
+            "mae_lt_10pct":         bool(rel_mae_pct < 10.0),
+            "horizon_gte_2_bursts": bool(eff_horizon >= 2),
         },
     }
     with open(OUT_DIR / "failure_metrics.json", "w") as f:

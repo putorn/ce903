@@ -189,15 +189,15 @@ def main():
     eff_horizon, per_step_pct = compute_effective_horizon(model, val_dl, mean, std)
 
     metrics = {
-        "seed":                  SEED,
-        "best_epoch":            best_epoch,
-        "val_relative_mae_pct":  round(best_mae, 4),
-        "effective_horizon":     eff_horizon,
-        "per_step_rel_mae_pct":  [round(v, 4) for v in per_step_pct],
-        "normalisation":         {"mean_ns": mean, "std_ns": std},
+        "seed":                  int(SEED),
+        "best_epoch":            int(best_epoch),
+        "val_relative_mae_pct":  round(float(best_mae), 4),
+        "effective_horizon":     int(eff_horizon),
+        "per_step_rel_mae_pct":  [round(float(v), 4) for v in per_step_pct],
+        "normalisation":         {"mean_ns": float(mean), "std_ns": float(std)},
         "acceptance_criteria": {
-            "mae_lt_10pct":         best_mae < 10.0,
-            "horizon_gte_2_bursts": eff_horizon >= 2,
+            "mae_lt_10pct":         bool(best_mae < 10.0),
+            "horizon_gte_2_bursts": bool(eff_horizon >= 2),
         },
     }
     with open(out_dir / "training_metrics.json", "w") as f:

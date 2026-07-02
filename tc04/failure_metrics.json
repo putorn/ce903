@@ -1,0 +1,16 @@
+{
+    "seed": 42,
+    "failure_trace_dir": "pod_a_pipeline/workloads_failure",
+    "topology_shift": "4\u21923 NPU (TC-03 failure pattern)",
+    "rel_mae_pct": 8.0583,
+    "effective_horizon": 3,
+    "per_step_rel_mae_pct": [
+        7.1636,
+        8.0246,
+        8.986
+    ],
+    "acceptance_criteria": {
+        "mae_lt_10pct": true,
+        "horizon_gte_2_bursts": true
+    }
+}

@@ -1,0 +1,19 @@
+{
+    "seed": 42,
+    "best_epoch": 19,
+    "val_relative_mae_pct": 2.385,
+    "effective_horizon": 3,
+    "per_step_rel_mae_pct": [
+        1.8354,
+        2.486,
+        2.8336
+    ],
+    "normalisation": {
+        "mean_ns": 9913041.084870597,
+        "std_ns": 493792.5035558938
+    },
+    "acceptance_criteria": {
+        "mae_lt_10pct": true,
+        "horizon_gte_2_bursts": true
+    }
+}

@@ -1,0 +1,23 @@
+[2026-07-02 02:18:11.218] [system::topology::RingTopology] [info] ring of node 0, id: 0 dimension: local total nodes in ring: 3 index in ring: 0 offset: 1 total nodes in ring: 3
+[2026-07-02 02:18:11.218] [system::topology::RingTopology] [info] ring of node 0, id: 0 dimension: local total nodes in ring: 3 index in ring: 0 offset: 1 total nodes in ring: 3
+[2026-07-02 02:18:11.218] [system::topology::RingTopology] [info] ring of node 0, id: 0 dimension: local total nodes in ring: 3 index in ring: 0 offset: 1 total nodes in ring: 3
+[2026-07-02 02:18:11.218] [system::topology::RingTopology] [info] ring of node 0, id: 0 dimension: local total nodes in ring: 3 index in ring: 0 offset: 1 total nodes in ring: 3
+[2026-07-02 02:18:11.218] [workload] [info] sys[1] finished, 94012616 cycles, exposed communication 14012616 cycles.
+[2026-07-02 02:18:11.218] [statistics] [info] sys[1]. Post statistics processing start.
+[2026-07-02 02:18:11.218] [statistics] [info] sys[1]. Post statistics processing end.
+[2026-07-02 02:18:11.218] [statistics] [info] sys[1], Wall time: 94012616
+[2026-07-02 02:18:11.218] [statistics] [info] sys[1], GPU time: 80000000
+[2026-07-02 02:18:11.218] [statistics] [info] sys[1], Comm time: 14012616
+[2026-07-02 02:18:11.218] [workload] [info] sys[2] finished, 94012616 cycles, exposed communication 14012616 cycles.
+[2026-07-02 02:18:11.218] [statistics] [info] sys[2]. Post statistics processing start.
+[2026-07-02 02:18:11.218] [statistics] [info] sys[2]. Post statistics processing end.
+[2026-07-02 02:18:11.218] [statistics] [info] sys[2], Wall time: 94012616
+[2026-07-02 02:18:11.218] [statistics] [info] sys[2], GPU time: 80000000
+[2026-07-02 02:18:11.218] [statistics] [info] sys[2], Comm time: 14012616
+[2026-07-02 02:18:11.218] [workload] [info] sys[0] finished, 94012616 cycles, exposed communication 14012616 cycles.
+[2026-07-02 02:18:11.218] [statistics] [info] sys[0]. Post statistics processing start.
+[2026-07-02 02:18:11.218] [statistics] [info] sys[0]. Post statistics processing end.
+[2026-07-02 02:18:11.218] [statistics] [info] sys[0], Wall time: 94012616
+[2026-07-02 02:18:11.218] [statistics] [info] sys[0], GPU time: 80000000
+[2026-07-02 02:18:11.218] [statistics] [info] sys[0], Comm time: 14012616
+[2026-07-02 02:18:11.218] [system] [warning] Exiting

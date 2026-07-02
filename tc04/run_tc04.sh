@@ -55,7 +55,7 @@ run_sim () {
         --network-configuration="${NET}" ) > "${OUT}/log_${name}.log" 2>&1
     # JCT = Wall time (cycles); identical across NPUs for a symmetric ring.
     # -m1 stops at the first match (clean exit, no SIGPIPE under pipefail).
-    grep -m1 -oP 'Wall time:\s*\K[0-9]+' "${OUT}/log_${name}.log"
+    grep -m1 -oE 'Wall time:[[:space:]]*[0-9]+' "${OUT}/log_${name}.log" | grep -oE '[0-9]+$'
 }
 
 echo "[TC-04] 2/3  Two simulation runs (seed-matched, failure topology)..."
