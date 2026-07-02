@@ -13,7 +13,7 @@ section "TC-03 — Fault Injection & JCT Recovery Penalty"
 (cd pod_a_pipeline && conda run -n p903 python run_fault_injection.py && conda run -n p903 python recovery_metrics.py) && RESULTS+=("TC-03: PASS") || RESULTS+=("TC-03: FAIL — see output above")
 
 section "TC-04 — Predictive Routing vs ECMP Baseline"
-(python pod_a_pipeline/make_synthetic_workloads.py && python tc04/train_lstm.py && python tc04/generate_routing.py && bash tc04/run_tc04.sh) && RESULTS+=("TC-04: PASS — copy the two JCT numbers above into tc04/TC04_results.md") || RESULTS+=("TC-04: FAIL — see output above")
+(conda run --no-capture-output -n p903 python pod_a_pipeline/make_synthetic_workloads.py && conda run --no-capture-output -n p903 python tc04/train_lstm.py && conda run --no-capture-output -n p903 python tc04/generate_routing.py && bash tc04/run_tc04.sh) && RESULTS+=("TC-04: PASS") || RESULTS+=("TC-04: FAIL — see output above")
 
 section "Regression Sweep Summary"
 printf '%s\n' "${RESULTS[@]}"
